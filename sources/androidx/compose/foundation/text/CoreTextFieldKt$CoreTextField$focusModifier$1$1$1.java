@@ -1,0 +1,64 @@
+package androidx.compose.foundation.text;
+
+import androidx.compose.foundation.relocation.BringIntoViewRequester;
+import androidx.compose.ui.text.input.OffsetMapping;
+import androidx.compose.ui.text.input.TextFieldValue;
+import kotlin.Metadata;
+import kotlin.ResultKt;
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
+import kotlin.coroutines.intrinsics.IntrinsicsKt;
+import kotlin.coroutines.jvm.internal.DebugMetadata;
+import kotlin.coroutines.jvm.internal.SuspendLambda;
+import kotlin.jvm.functions.Function2;
+import kotlinx.coroutines.CoroutineScope;
+
+@Metadata(k = 3, mv = {1, 8, 0}, xi = 48)
+@DebugMetadata(c = "androidx.compose.foundation.text.CoreTextFieldKt$CoreTextField$focusModifier$1$1$1", f = "CoreTextField.kt", i = {}, l = {308}, m = "invokeSuspend", n = {}, s = {})
+/* compiled from: CoreTextField.kt */
+final class CoreTextFieldKt$CoreTextField$focusModifier$1$1$1 extends SuspendLambda implements Function2<CoroutineScope, Continuation<? super Unit>, Object> {
+    final /* synthetic */ BringIntoViewRequester $bringIntoViewRequester;
+    final /* synthetic */ TextLayoutResultProxy $layoutResult;
+    final /* synthetic */ OffsetMapping $offsetMapping;
+    final /* synthetic */ TextFieldState $state;
+    final /* synthetic */ TextFieldValue $value;
+    int label;
+
+    /* JADX INFO: super call moved to the top of the method (can break code semantics) */
+    CoreTextFieldKt$CoreTextField$focusModifier$1$1$1(BringIntoViewRequester bringIntoViewRequester, TextFieldValue textFieldValue, TextFieldState textFieldState, TextLayoutResultProxy textLayoutResultProxy, OffsetMapping offsetMapping, Continuation<? super CoreTextFieldKt$CoreTextField$focusModifier$1$1$1> continuation) {
+        super(2, continuation);
+        this.$bringIntoViewRequester = bringIntoViewRequester;
+        this.$value = textFieldValue;
+        this.$state = textFieldState;
+        this.$layoutResult = textLayoutResultProxy;
+        this.$offsetMapping = offsetMapping;
+    }
+
+    public final Continuation<Unit> create(Object obj, Continuation<?> continuation) {
+        return new CoreTextFieldKt$CoreTextField$focusModifier$1$1$1(this.$bringIntoViewRequester, this.$value, this.$state, this.$layoutResult, this.$offsetMapping, continuation);
+    }
+
+    public final Object invoke(CoroutineScope coroutineScope, Continuation<? super Unit> continuation) {
+        return ((CoreTextFieldKt$CoreTextField$focusModifier$1$1$1) create(coroutineScope, continuation)).invokeSuspend(Unit.INSTANCE);
+    }
+
+    public final Object invokeSuspend(Object $result) {
+        Object coroutine_suspended = IntrinsicsKt.getCOROUTINE_SUSPENDED();
+        switch (this.label) {
+            case 0:
+                ResultKt.throwOnFailure($result);
+                this.label = 1;
+                if (CoreTextFieldKt.bringSelectionEndIntoView(this.$bringIntoViewRequester, this.$value, this.$state.getTextDelegate(), this.$layoutResult.getValue(), this.$offsetMapping, this) != coroutine_suspended) {
+                    break;
+                } else {
+                    return coroutine_suspended;
+                }
+            case 1:
+                ResultKt.throwOnFailure($result);
+                break;
+            default:
+                throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        }
+        return Unit.INSTANCE;
+    }
+}

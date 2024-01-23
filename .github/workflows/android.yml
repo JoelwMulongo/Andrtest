@@ -1,1 +1,38 @@
+name: Android CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+
+    - name: Set up Android SDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'android'
+        java-version: '11'
+        components: 'platform-tools'
+
+    - name: Build with Gradle
+      run: ./gradlew build
+
+    - name: Run tests
+      run: ./gradlew test
+
+    - name: Display app-metadata properties
+      run: cat Andrtest/resources/META-INF/com/android/build/gradle/app-metadata.properties
 
